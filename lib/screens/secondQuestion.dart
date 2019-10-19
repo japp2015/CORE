@@ -4,8 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 
 class SecondQuestion extends StatefulWidget {
+
+  final List<String> q1_ans;
+  String val;
+
+  SecondQuestion({Key key, this.q1_ans}) : super (key:key);
+
   @override
   State<StatefulWidget> createState() {
+    if(q1_ans == null || q1_ans.isEmpty) {
+      val = "NÃO PREENCHEU NADA NA 1";
+    }
+    else {
+      val = "RESPOSTA NA 1: " + q1_ans[0];
+    }
     return Question();
   }
 }
@@ -33,18 +45,21 @@ class Question extends State<SecondQuestion> {
                 ),
               ),
             ),
-            CheckboxGroup(
-              labels: <String>[
-                "Engineering",
-                "Technical",
-                "Sales",
-                "Automation",
-                "Data Science",
-              ],
-              onSelected: (List<String> checked) {
-                q2_checked = checked;
-                print(q2_checked.toString());
-              },
+            Padding(
+              padding: EdgeInsets.only(left: 40),
+              child: CheckboxGroup(
+                labels: <String>[
+                  "Engineering",
+                  "Technical",
+                  "Sales",
+                  "Automation",
+                  "Data Science",
+                ],
+                onSelected: (List<String> checked) {
+                  q2_checked = checked;
+                  print(q2_checked.toString());
+                },
+              ),
             ),
           ])),
       bottomNavigationBar: Container(
@@ -69,7 +84,7 @@ class Question extends State<SecondQuestion> {
             RaisedButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return ThirdQuestion();
+                  return ThirdQuestion(q1_ans: widget.q1_ans, q2_ans: q2_checked);
                 }));
               },
               child: Text("Next", style: TextStyle(color: Colors.white)),

@@ -33,18 +33,21 @@ class Question extends State<FirstQuestion> {
                   ),
                 ),
               ),
-              CheckboxGroup(
-                  labels: <String>[
-                    "Web Development",
-                    "App Development",
-                    "Security",
-                    "Automation",
-                    "Data Science",
-                  ],
-                onSelected: (List<String> checked) {
-                  q1_checked = checked;
-                  print(q1_checked.toString());
-                },),
+              Padding(
+                padding: EdgeInsets.only(left: 40),
+                child: CheckboxGroup(
+                    labels: <String>[
+                      "Web Development",
+                      "App Development",
+                      "Security",
+                      "Automation",
+                      "Data Science",
+                    ],
+                  onSelected: (List<String> checked) {
+                    q1_checked = checked;
+                    print(q1_checked.toString());
+                  },),
+              ),
             ])),
       bottomNavigationBar: Container(
           child: Padding(
@@ -68,7 +71,7 @@ class Question extends State<FirstQuestion> {
                 RaisedButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return SecondQuestion();
+                      return SecondQuestion(q1_ans: q1_checked);
                     }));
                   },
                   child: Text("Next", style: TextStyle(color: Colors.white)),
