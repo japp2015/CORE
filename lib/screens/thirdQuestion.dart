@@ -1,33 +1,17 @@
 import 'package:core/screens/formAnswers.dart';
 import 'package:core/screens/secondQuestion.dart';
-import 'package:core/screens/startForm.dart';
+import 'package:core/screens/formAnswers.dart';
 import 'package:flutter/material.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
 
 class ThirdQuestion extends StatefulWidget {
 
-  final List<String> q1_ans;
-  final List<String> q2_ans;
+  List<String> answers;
+  bool answered;
 
-  String val1, val2;
-
-  ThirdQuestion({Key key, this.q1_ans, this.q2_ans}) : super (key:key);
+  ThirdQuestion({Key key, this.answers}) : super (key:key);
 
   @override
   State<StatefulWidget> createState() {
-    if(q1_ans == null || q1_ans.isEmpty) {
-      val1 = "NÃO PREENCHEU NADA NA 1";
-    }
-    else {
-      val1 = "Resposta na 1: " + q1_ans[0];
-    }
-
-    if(q2_ans == null || q2_ans.isEmpty) {
-      val2 = "NÃO PREENCHEU NADA NA 2";
-    }
-    else {
-      val2 = "Resposta na 2: " + q2_ans[0];
-    }
 
     return Question();
   }
@@ -77,34 +61,85 @@ class Question extends State<ThirdQuestion> {
       bottomNavigationBar: Container(
           child: Padding(
             padding: EdgeInsets.only(top: 20),
-            child: ButtonBar(
-              alignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FlatButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return SecondQuestion();
-                    }));
-                    },
-                  child: Text(
-                    "Back",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: new Color(0xFF002A72)),
-                  ),
-                  color: Colors.white,
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return FormAnswers(q1_ans: widget.q1_ans, q2_ans: widget.q2_ans, q3_ans: q3_txt);
-                    }));
-                  },
-                  child: Text("Next", style: TextStyle(color: Colors.white)),
-                  color: new Color(0xFF002A72),
-                )
-              ],
-            ),
+            child: getButtons(),
           )),
     );
   }
+
+  Widget getButtons() {
+
+    if(widget.answers.length==2) {
+      return ButtonBar(
+        alignment: MainAxisAlignment.center,
+        children: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return SecondQuestion();
+              }));
+            },
+            child: Text(
+              "Back",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: new Color(0xFF002A72)),
+            ),
+            color: Colors.white,
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                if(q3_txt == null || q3_txt.isEmpty) {
+                  widget.answers.add("Not answered");
+                }
+                else {
+                  widget.answers.add(q3_txt);
+                }
+                return FormAnswers(answers: widget.answers);
+              }));
+            },
+            child: Text("Next", style: TextStyle(color: Colors.white)),
+            color: new Color(0xFF002A72),
+          )
+        ],
+      );
+    }
+    else {
+      return ButtonBar(
+        alignment: MainAxisAlignment.center,
+        children: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return FormAnswers();
+              }));
+            },
+            child: Text(
+              "Cancel",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: new Color(0xFF002A72)),
+            ),
+            color: Colors.white,
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                if(q3_txt == null || q3_txt.isEmpty) {
+                  widget.answers[2]="Not answered";
+                }
+                else {
+                  widget.answers[2]=q3_txt;
+                }
+                return FormAnswers(answers: widget.answers);
+
+              }));
+            },
+            child: Text("Resubmit", style: TextStyle(color: Colors.white)),
+            color: new Color(0xFF002A72),
+          )
+        ],
+      );
+    }
+
+  }
+
 }

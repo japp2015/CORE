@@ -1,53 +1,61 @@
+import 'package:core/screens/firstQuestion.dart';
 import 'package:core/screens/secondQuestion.dart';
+import 'package:core/screens/thirdQuestion.dart';
 import 'package:core/screens/startForm.dart';
 import 'package:flutter/material.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
+import 'package:starflut/starflut.dart';
 
 class FormAnswers extends StatefulWidget {
 
-  final List<String> q1_ans;
-  final List<String> q2_ans;
-  final String q3_ans;
+  final List<String> answers;
 
-  String val1, val2, val3;
-
-  FormAnswers({Key key, this.q1_ans, this.q2_ans, this.q3_ans})
-      : super (key: key);
+  FormAnswers({Key key, this.answers}) : super (key: key);
 
   @override
   State<StatefulWidget> createState() {
-    if (q1_ans == null || q1_ans.isEmpty) {
-      val1 = "Missing";
-    }
-    else {
-      val1 = "";
-      for (int i = 0; i < q1_ans.length; i++) {
-        val1 = val1  +  q1_ans[i] + ", ";
-      }
-    }
 
-    if (q2_ans == null || q2_ans.isEmpty) {
-      val2 = "Missing";
-    }
-    else {
-      val2 = "";
-      for (int i = 0; i < q2_ans.length; i++) {
-        val2 = val2 + q2_ans[i] + ", ";
-      }
-    }
-
-    if (q3_ans == null || q3_ans.isEmpty) {
-      val3 = "Missing";
-    }
-    else {
-      val3 = q3_ans;
-    }
-
+    debugPrint(answers.toString());
     return Answers();
   }
 }
 
+
 class Answers extends State<FormAnswers> {
+
+  Widget getListView() {
+
+    var listItems = widget.answers;
+
+    var listView = ListView.builder(
+        itemCount: listItems.length,
+        itemBuilder: (context, index) {
+
+          return ListTile(
+              leading: Icon(Icons.keyboard_arrow_right),
+              title: Text("Question ${index+1}"),
+              subtitle: Text(listItems[index]),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  switch(index) {
+                    case 0:
+                      return FirstQuestion(answers: widget.answers);
+                    case 1:
+                      return SecondQuestion(answers: widget.answers);
+                    case 2:
+                      return ThirdQuestion(answers: widget.answers);
+                    default:
+                      return FormAnswers(answers: widget.answers);
+                  }
+
+                }));
+              }
+          );
+        }
+    );
+    return listView;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,83 +66,7 @@ class Answers extends State<FormAnswers> {
           child:
               Padding(
                 padding: EdgeInsets.only(top: 30, left: 20, right: 20),
-                child: ListView(
-                  shrinkWrap: true,
-                  children: <Widget>[
-                  ListTile(
-                    leading: Text(
-                      "Answer 1"
-                    ),
-                    title: Text(
-                      widget.val1,
-                    ),
-                  ),
-                  ListTile(
-                    leading: Text(
-                        "Answer 2"
-                    ),
-                    title: Text(
-                      widget.val2,
-                    ),
-                  ),
-                  ListTile(
-                    leading: Text(
-                        "Answer 3"
-                    ),
-                    title: Text(
-                      widget.val3,
-                    ),
-                  ),
-                    ListTile(
-                      leading: Text(
-                          "Answer 3"
-                      ),
-                      title: Text(
-                        widget.val3,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Text(
-                          "Answer 3"
-                      ),
-                      title: Text(
-                        widget.val3,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Text(
-                          "Answer 3"
-                      ),
-                      title: Text(
-                        widget.val3,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Text(
-                          "Answer 3"
-                      ),
-                      title: Text(
-                        widget.val3,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Text(
-                          "Answer 3"
-                      ),
-                      title: Text(
-                        widget.val3,
-                      ),
-                    ),
-                    ListTile(
-                      leading: Text(
-                          "Answer 3"
-                      ),
-                      title: Text(
-                        widget.val3,
-                      ),
-                    ),
-                ],
-                ),
+                child: getListView(),
               )
 
 
