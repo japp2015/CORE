@@ -2,6 +2,7 @@ import 'package:core/screens/formAnswers.dart';
 import 'package:core/screens/startForm.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class FirstQuestion extends StatefulWidget {
   List<String> answers;
@@ -43,8 +44,19 @@ class Question1 extends State<FirstQuestion> {
       ),
       body: Container(
           child: Column(children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 0.11,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
         Padding(
-          padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+          padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
           child: Text(
             "You believe the best solutions come from a safe environment where teammates can share ideas",
             textAlign: TextAlign.center,
@@ -229,8 +241,19 @@ class Question2 extends State<SecondQuestion> {
       ),
       body: Container(
           child: Column(children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 0.11*2,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
         Padding(
-          padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+          padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
           child: Text(
             "You're always looking for which Javascript framework offers you the best performance",
             textAlign: TextAlign.center,
@@ -431,7 +454,18 @@ class Question3 extends State<ThirdQuestion> {
       body: Container(
           child: Column(children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 0.11*3,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
               child: Text(
                 "You protect your info, shop safely, clean up your cache and change passwords frequently",
                 textAlign: TextAlign.center,
@@ -632,7 +666,18 @@ class Question4 extends State<FourthQuestion> {
       body: Container(
           child: Column(children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 0.11*4,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
               child: Text(
                 "You believe AI is a wonder of modern science that has made a lot of things possible that were unthinkable before",
                 textAlign: TextAlign.center,
@@ -833,12 +878,23 @@ class Question5 extends State<FifthQuestion> {
       body: Container(
           child: Column(children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 0.11*5,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
               child: Text(
                 "Your biggest wish is to have a smart home where IoT devices provide lighting, heating, media and security systems",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 17,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -1034,7 +1090,18 @@ class Question6 extends State<SixthQuestion> {
       body: Container(
           child: Column(children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 0.11*6,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
               child: Text(
                 "You know how important it is to provide a positive user experience",
                 textAlign: TextAlign.center,
@@ -1235,7 +1302,18 @@ class Question7 extends State<SeventhQuestion> {
       body: Container(
           child: Column(children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 0.11*7,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
               child: Text(
                 "You believe decentralized cryptocurrencies will see increased use from all sectors",
                 textAlign: TextAlign.center,
@@ -1436,7 +1514,18 @@ class Question8 extends State<EighthQuestion> {
       body: Container(
           child: Column(children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 0.11*8,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
               child: Text(
                 "You can't commit to a single operating system environment so virtual machines are a lifesaver",
                 textAlign: TextAlign.center,
@@ -1637,7 +1726,18 @@ class Question9 extends State<NinethQuestion> {
       body: Container(
           child: Column(children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 40, right: 40, top: 70, bottom: 20),
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+              child: LinearPercentIndicator(
+                animation: true,
+                lineHeight: 15.0,
+                animationDuration: 1000,
+                percent: 1,
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Colors.greenAccent,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
               child: Text(
                 "Sort the following topics according to your preference",
                 textAlign: TextAlign.center,
