@@ -13,16 +13,19 @@ class Rankings extends StatefulWidget {
 class _Rankings extends State<Rankings> {
 
   final database = FirebaseDatabase.instance.reference().child("Program");
+  List allLectures= new List();
 
   void getData() async {
+    List allLec= new List();
     database.once().then((snap) {
       Map<dynamic,dynamic> map = snap.value;
       map.forEach((key, value) {
-        var names=snap.value[key].toString();
-          //print(names);
-        });
+        var lecture=snap.value[key];
+        allLec.add(lecture);
+        debugPrint(lecture['title']);
       });
-
+    });
+    allLectures=allLec;
   }
 
   List allItems = [
@@ -33,7 +36,7 @@ class _Rankings extends State<Rankings> {
       'abstract': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu pellentesque enim. Duis sollicitudin nec nibh non pretium. Ut pharetra porta est, sed pulvinar leo lobortis vel. Morbi vel varius odio. Maecenas tristique quam sit amet orci auctor tristique. Ut justo nisl, porttitor ut massa in, iaculis tincidunt velit. ',
       'date': '17/11/2019',
       'start_hour': '09:00',
-      'end_hour': '11:00',
+      'end_hour': '11:15',
       'rank': '97%',
       'selected': false
     },
@@ -43,8 +46,8 @@ class _Rankings extends State<Rankings> {
       'speaker': 'Joao Pereira',
       'abstract': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu pellentesque enim. Duis sollicitudin nec nibh non pretium. Ut pharetra porta est, sed pulvinar leo lobortis vel. Morbi vel varius odio. Maecenas tristique quam sit amet orci auctor tristique. Ut justo nisl, porttitor ut massa in, iaculis tincidunt velit. ',
       'date': '17/11/2019',
-      'start_hour': '12:00',
-      'end_hour': '13:00',
+      'start_hour': '12:15',
+      'end_hour': '14:30',
       'rank': '93%',
       'selected': false
     },
@@ -54,7 +57,7 @@ class _Rankings extends State<Rankings> {
       'speaker': 'Maria Ribeiro',
       'abstract': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu pellentesque enim. Duis sollicitudin nec nibh non pretium. Ut pharetra porta est, sed pulvinar leo lobortis vel. Morbi vel varius odio. Maecenas tristique quam sit amet orci auctor tristique. Ut justo nisl, porttitor ut massa in, iaculis tincidunt velit. ',
       'date': '17/11/2019',
-      'start_hour': '16:00',
+      'start_hour': '16:30',
       'end_hour': '18:00',
       'rank': '93%',
       'selected': false
@@ -65,7 +68,7 @@ class _Rankings extends State<Rankings> {
       'speaker': 'Patricia Rocha',
       'abstract': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu pellentesque enim. Duis sollicitudin nec nibh non pretium. Ut pharetra porta est, sed pulvinar leo lobortis vel. Morbi vel varius odio. Maecenas tristique quam sit amet orci auctor tristique. Ut justo nisl, porttitor ut massa in, iaculis tincidunt velit. ',
       'date': '18/11/2019',
-      'start_hour': '08:00',
+      'start_hour': '08:30',
       'end_hour': '09:00',
       'rank': '86%',
       'selected': false
@@ -89,7 +92,7 @@ class _Rankings extends State<Rankings> {
       'abstract': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu pellentesque enim. Duis sollicitudin nec nibh non pretium. Ut pharetra porta est, sed pulvinar leo lobortis vel. Morbi vel varius odio. Maecenas tristique quam sit amet orci auctor tristique. Ut justo nisl, porttitor ut massa in, iaculis tincidunt velit. ',
       'date': '18/11/2019',
       'start_hour': '14:00',
-      'end_hour': '17:00',
+      'end_hour': '17:15',
       'rank': '81%',
       'selected': false
     },
@@ -100,7 +103,7 @@ class _Rankings extends State<Rankings> {
       'abstract': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu pellentesque enim. Duis sollicitudin nec nibh non pretium. Ut pharetra porta est, sed pulvinar leo lobortis vel. Morbi vel varius odio. Maecenas tristique quam sit amet orci auctor tristique. Ut justo nisl, porttitor ut massa in, iaculis tincidunt velit. ',
       'date': '18/11/2019',
       'start_hour': '10:00',
-      'end_hour': '11:00',
+      'end_hour': '10:30',
       'rank': '75%',
       'selected': false
     },
@@ -111,7 +114,7 @@ class _Rankings extends State<Rankings> {
       'abstract': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu pellentesque enim. Duis sollicitudin nec nibh non pretium. Ut pharetra porta est, sed pulvinar leo lobortis vel. Morbi vel varius odio. Maecenas tristique quam sit amet orci auctor tristique. Ut justo nisl, porttitor ut massa in, iaculis tincidunt velit. ',
       'date': '19/11/2019',
       'start_hour': '14:00',
-      'end_hour': '16:00',
+      'end_hour': '15:45',
       'rank': '75%',
       'selected': false
     },
@@ -121,7 +124,7 @@ class _Rankings extends State<Rankings> {
       'speaker': 'Quim Barreiros',
       'abstract': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu pellentesque enim. Duis sollicitudin nec nibh non pretium. Ut pharetra porta est, sed pulvinar leo lobortis vel. Morbi vel varius odio. Maecenas tristique quam sit amet orci auctor tristique. Ut justo nisl, porttitor ut massa in, iaculis tincidunt velit. ',
       'date': '19/11/2019',
-      'start_hour': '17:00',
+      'start_hour': '17:15',
       'end_hour': '18:00',
       'rank': '70%',
       'selected': false
@@ -130,15 +133,26 @@ class _Rankings extends State<Rankings> {
 
 
 
-  void _showDialog(String name, String abstract) {
+  void _showDialog(String title, String speaker, String date, String start, String end, String abstract) {
     // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: new Text(name),
-          content: new Text(abstract),
+          title: new Text(title),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text("Speaker: " + speaker),
+              Text(""),
+              Text("Date: " + date),
+              Text(""),
+              Text("Hour: " + start + "-" + end),
+              Text(""),
+              Text(abstract, style: TextStyle(fontWeight: FontWeight.w300),),
+            ],
+          ),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
@@ -160,7 +174,7 @@ class _Rankings extends State<Rankings> {
       padding: EdgeInsets.only(top: 20, right: 30, left: 30),
       child: InkWell(
         onTap: () {
-          _showDialog(item['name'], item['abstract']);
+          _showDialog(item['title'], item['speaker'], item['date'], item['start_hour'], item['end_hour'], item['abstract']);
         },
         child: Container(
           child: Card(
@@ -228,6 +242,7 @@ class _Rankings extends State<Rankings> {
   }
 
   Widget getRanking() {
+    getData();
     return Container(
       child: ListView(
         children: allItems.map((element) {
