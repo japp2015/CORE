@@ -58,7 +58,7 @@ class Question1 extends State<FirstQuestion> {
         Padding(
           padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
           child: Text(
-            "You believe the best solutions come from a safe environment where teammates can share ideas",
+            "You're always looking for which Javascript framework offers you the best performance",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -255,7 +255,7 @@ class Question2 extends State<SecondQuestion> {
         Padding(
           padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
           child: Text(
-            "You're always looking for which Javascript framework offers you the best performance",
+            "You protect your info, shop safely, clean up your cache and change passwords frequently",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -467,7 +467,7 @@ class Question3 extends State<ThirdQuestion> {
         Padding(
           padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
           child: Text(
-            "You protect your info, shop safely, clean up your cache and change passwords frequently",
+            "You believe AI is a wonder of modern science that has made a lot of things possible that were unthinkable before",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -679,7 +679,7 @@ class Question4 extends State<FourthQuestion> {
         Padding(
           padding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
           child: Text(
-            "You believe AI is a wonder of modern science that has made a lot of things possible that were unthinkable before",
+            "YYour biggest wish is to have a smart home where IoT devices provide lighting, heating, media and security systems",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 17,
@@ -890,7 +890,7 @@ class Question5 extends State<FifthQuestion> {
         Padding(
           padding: EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 20),
           child: Text(
-            "Your biggest wish is to have a smart home where IoT devices provide lighting, heating, media and security systems",
+            "You know how important it is to provide a positive user experience",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16,
@@ -1102,7 +1102,7 @@ class Question6 extends State<SixthQuestion> {
         Padding(
           padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
           child: Text(
-            "You know how important it is to provide a positive user experience",
+            "You're an enthusiast of functional programming languages",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -1314,7 +1314,7 @@ class Question7 extends State<SeventhQuestion> {
         Padding(
           padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
           child: Text(
-            "You believe decentralized cryptocurrencies will see increased use from all sectors",
+            "You can't commit to a single operating system environment so virtual machines are a lifesaver",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -1526,7 +1526,7 @@ class Question8 extends State<EighthQuestion> {
         Padding(
           padding: EdgeInsets.only(left: 40, right: 40, top: 30, bottom: 20),
           child: Text(
-            "You can't commit to a single operating system environment so virtual machines are a lifesaver",
+            "You're a pro in high-level programming languages",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,

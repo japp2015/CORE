@@ -10,6 +10,7 @@ class FormAnswers extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
+    debugPrint(answers.toString());
     return Answers();
   }
 }
@@ -156,7 +157,7 @@ class Answers extends State<FormAnswers> {
         if (missing_answer == false) {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) {
-                return Rankings();
+                return Rankings(answers: widget.answers);
               }));
         } else {
           Scaffold.of(context).showSnackBar(SnackBar(
